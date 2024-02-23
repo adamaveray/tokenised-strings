@@ -1,0 +1,40 @@
+{
+  "name": "averay/tokenised-strings",
+  "description": "A lightweight system for rendering tokens in templated strings.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Adam Averay",
+      "homepage": "https://adamaveray.au/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Averay\\TokenisedStrings\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Averay\\TokenisedStrings\\TestsResources\\": "tests/lib/",
+      "Averay\\TokenisedStrings\\Tests\\": "tests/src/"
+    }
+  },
+  "scripts": {
+    "format": "composer run-script format:prettier",
+    "format:prettier": "bunx --bun prettier --write .",
+    "lint": "composer run-script lint:prettier && composer run-script lint:psalm",
+    "lint:prettier": "bunx --bun prettier --check .",
+    "lint:psalm": "vendor/bin/psalm --no-cache",
+    "test": "vendor/bin/phpunit tests"
+  },
+  "require": {
+    "php": ">=8.2",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "phpunit/php-code-coverage": "^10.1",
+    "phpunit/phpunit": "^10.5",
+    "vimeo/psalm": "^5.22.2"
+  }
+}
