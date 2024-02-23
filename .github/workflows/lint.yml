@@ -31,13 +31,11 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring
-        env:
-          fail-fast: true
+        env: { fail-fast: true }
 
       - name: Cache NPM packages
         uses: actions/cache@v3
-        env:
-          cache-name: root-npm
+        env: { cache-name: npm }
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('bun.lockb') }}
@@ -48,10 +46,9 @@ jobs:
 
       - name: Cache Composer packages
         uses: actions/cache@v3
-        env:
-          cache-name: server-composer
+        env: { cache-name: composer }
         with:
-          path: server/vendor
+          path: vendor
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-test-${{ env.cache-name }}-
