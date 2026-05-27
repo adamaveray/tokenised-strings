@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Averay\TokenisedStrings\Exceptions;
 
-class ParsingException extends \RuntimeException
+final class ParsingException extends \RuntimeException
 {
   public function __construct(string $message, string $string, int $offset, ?\Throwable $previous = null)
   {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Averay\TokenisedStrings\Exceptions;
 
-class InaccessibleNestedValueException extends \OutOfBoundsException
+final class InaccessibleNestedValueException extends \OutOfBoundsException
 {
   public function __construct(string $message, string $propertyPath, ?\Throwable $previous = null)
   {
