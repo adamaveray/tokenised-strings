@@ -118,7 +118,7 @@ final class TokenizedStringBuilderTest extends TestCase
   #[DataProvider('buildingUrlDataProvider')]
   public function testBuildingUrl(
     string $expected,
-    string $string,
+    string $url,
     array $params,
     array $additionalParams,
     bool $raw,
@@ -128,15 +128,15 @@ final class TokenizedStringBuilderTest extends TestCase
     foreach ($params as $paramName => $paramValue) {
       $builder->addParam($paramName, $paramValue);
     }
-    $result = $builder->buildAsUrl($string, $additionalParams, $raw);
-    self::assertTrue($builder->canBuild($string, $additionalParams), 'The string should be buildable.');
+    $result = $builder->buildAsUrl($url, $additionalParams, $raw);
+    self::assertTrue($builder->canBuild($url, $additionalParams), 'The string should be buildable.');
     self::assertEquals($expected, $result, 'The correct URL should be generated.');
   }
 
   /**
    * @return iterable<string, array{
    *   expected: string,
-   *   url: string,
+   *   string: string,
    *   params: array<string,mixed>,
    *   additionalParams: array<string,mixed>,
    * }>
@@ -214,7 +214,7 @@ final class TokenizedStringBuilderTest extends TestCase
   /**
    * @return iterable<string, array{
    *   expected: string,
-   *   html: string,
+   *   string: string,
    *   params: array<string,mixed>,
    *   additionalParams: array<string,mixed>,
    * }>
@@ -223,14 +223,14 @@ final class TokenizedStringBuilderTest extends TestCase
   {
     yield 'Simple' => [
       'expected' => '<p>Hello world.</p>',
-      'html' => '<p>Hello world.</p>',
+      'string' => '<p>Hello world.</p>',
       'params' => [],
       'additionalParams' => [],
     ];
 
     yield 'With Tokens Replaced' => [
       'expected' => '<p>Hello &lt;replaced value&gt;</p>',
-      'html' => '<p>Hello {{ test_token }}</p>',
+      'string' => '<p>Hello {{ test_token }}</p>',
       'params' => [
         'test_token' => '<replaced value>',
       ],
@@ -239,7 +239,7 @@ final class TokenizedStringBuilderTest extends TestCase
 
     yield 'With Additional Tokens Replaced' => [
       'expected' => '<p>Hello &lt;subsequent value&gt;</p>',
-      'html' => '<p>Hello {{ test_token }}</p>',
+      'string' => '<p>Hello {{ test_token }}</p>',
       'params' => [],
       'additionalParams' => [
         'test_token' => '<subsequent value>',
@@ -248,7 +248,7 @@ final class TokenizedStringBuilderTest extends TestCase
 
     yield 'With Additional Tokens Overwriting Global' => [
       'expected' => '<p>Hello &lt;replaced value&gt;</p>',
-      'html' => '<p>Hello {{ test_token }}</p>',
+      'string' => '<p>Hello {{ test_token }}</p>',
       'params' => [
         'test_token' => '<initial value>',
       ],

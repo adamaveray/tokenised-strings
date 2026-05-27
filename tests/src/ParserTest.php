@@ -30,14 +30,14 @@ final class ParserTest extends TestCase
   {
     yield 'No Tags' => [
       'string' => 'Hello World',
-      'nodes' => [
+      'expectedTree' => [
         0 => new Nodes\TextNode('Hello World'),
       ],
     ];
 
     yield 'Simple Tag' => [
       'string' => 'Hello {tag} World',
-      'nodes' => [
+      'expectedTree' => [
         0 => new Nodes\TextNode('Hello '),
         1 => new Nodes\TagNode(['tag'], []),
         2 => new Nodes\TextNode(' World'),
@@ -46,14 +46,14 @@ final class ParserTest extends TestCase
 
     yield 'Tag-Only' => [
       'string' => '{tag}',
-      'nodes' => [
+      'expectedTree' => [
         0 => new Nodes\TagNode(['tag'], []),
       ],
     ];
 
     yield 'Nested Tag Properties' => [
       'string' => '{tag.with.nesting}',
-      'nodes' => [
+      'expectedTree' => [
         0 => new Nodes\TagNode(['tag', 'with', 'nesting'], []),
       ],
     ];
@@ -63,7 +63,7 @@ final class ParserTest extends TestCase
       { tag.with.nesting|modifier1|modifier2 }{ another.tag } Some Content { tag|modifier }{ final }
       TXT
       ,
-      'nodes' => [
+      'expectedTree' => [
         0 => new Nodes\TagNode(['tag', 'with', 'nesting'], ['modifier1', 'modifier2']),
         1 => new Nodes\TagNode(['another', 'tag'], []),
         2 => new Nodes\TextNode(' Some Content '),
