@@ -10,9 +10,7 @@ namespace Averay\TokenisedStrings\Parsing\Nodes;
  */
 final readonly class TextNode extends AbstractNode
 {
-  public function __construct(public string $content)
-  {
-  }
+  public function __construct(public string $content) {}
 
   /**
    * @psalm-assert-if-true non-empty-string $this->content

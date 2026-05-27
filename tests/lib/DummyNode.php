@@ -7,9 +7,7 @@ use Averay\TokenisedStrings\Parsing\Nodes\AbstractNode;
 
 final readonly class DummyNode extends AbstractNode
 {
-  public function __construct(public string $key, public bool $empty = false)
-  {
-  }
+  public function __construct(public string $key, public bool $empty = false) {}
 
   public function isEmpty(): bool
   {

@@ -8,9 +8,7 @@ namespace Averay\TokenisedStrings\Values;
  */
 class ObjectValueBag extends ValueBag
 {
-  public function __construct(private readonly object $object)
-  {
-  }
+  public function __construct(private readonly object $object) {}
 
   /**
    * @param list<string> $keys

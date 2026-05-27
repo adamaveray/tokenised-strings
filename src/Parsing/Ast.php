@@ -13,9 +13,7 @@ use Averay\TokenisedStrings\Parsing\Nodes\AbstractNode;
 final class Ast
 {
   /** @param list<AbstractNode> $tree */
-  public function __construct(private array $tree = [])
-  {
-  }
+  public function __construct(private array $tree = []) {}
 
   public function pushNode(AbstractNode $node): void
   {
