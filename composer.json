@@ -29,7 +29,7 @@
     "test": "vendor/bin/phpunit tests"
   },
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.4",
     "ext-mbstring": "*"
   },
   "require-dev": {
