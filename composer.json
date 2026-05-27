@@ -2,6 +2,7 @@
   "name": "averay/tokenised-strings",
   "description": "A lightweight system for rendering tokens in templated strings.",
   "type": "library",
+  "version": "1.0.1",
   "license": "MIT",
   "authors": [
     {
